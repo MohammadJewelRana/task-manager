@@ -8,11 +8,11 @@ import Registration from '../Pages/Login_Reg/Registration';
 const HomeLayout = () => {
     return (
         <div>
-            {/* <Navbar></Navbar>
+            <Navbar></Navbar>
             <Outlet></Outlet>
-            <Footer></Footer> */}
+            {/* <Footer></Footer> */}
 
-            <Login></Login>
+            {/* <Login></Login> */}
             {/* <Registration></Registration> */}
 
         </div>
