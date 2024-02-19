@@ -4,7 +4,7 @@ import { AuthContext } from '../Provider/AuthProvider';
 const Navbar = () => {
 
   const { name } = useContext(AuthContext)
-  console.log(name);
+  // console.log(name);
 
   return (
     <div>
