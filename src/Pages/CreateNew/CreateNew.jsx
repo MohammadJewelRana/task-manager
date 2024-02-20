@@ -17,7 +17,7 @@ const CreateNew = () => {
         const month = today.getMonth() + 1;
         const year = today.getFullYear();
         const date = today.getDate();
- 
+
         const dateToday = `${date}-${month}-${year}`;
         return dateToday;
 
@@ -32,15 +32,15 @@ const CreateNew = () => {
         const details = form.taskDetails.value;
 
         // todayDate();
-        const date=todayDate();
+        const date = todayDate();
         // console.log(date);
 
         // console.log(task,details);
 
-        const taskData = { task, details,date,status:'new' };
+        const taskData = { task, details, date, status: 'new' };
         // console.log(taskData);
 
-        fetch('http://localhost:5000/tasks', {
+        fetch('https://task-manager-server-nine-mu.vercel.app/tasks', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
