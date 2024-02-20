@@ -6,7 +6,7 @@ import useTask from "../../hooks/useTask";
 const NewTask = () => {
 
 
-    const [tasks] = useTask();
+    const [tasks, taskLoading, refetch] = useTask();
 
     const newStatusTask = tasks.filter(item => item.status === 'new');
     // console.log(newStatusTask);

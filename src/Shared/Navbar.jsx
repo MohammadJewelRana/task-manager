@@ -1,5 +1,6 @@
 import React, { useContext } from 'react';
 import { AuthContext } from '../Provider/AuthProvider';
+import { Link } from 'react-router-dom';
 
 const Navbar = () => {
 
@@ -17,13 +18,16 @@ const Navbar = () => {
             </div>
           
           
-            <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-red-100 rounded-box w-52">
-              <li><a>Item 1</a></li>
-              <li>
-                <a>Parent</a>
-                
-              </li>
-              <li><a>Item 3</a></li>
+            <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-gray-500 rounded-box w-52  text-white  ">
+              <li> <Link to='/'>Dashboard</Link></li>
+              <li>  <Link to='/createNew'>Create New</Link></li>
+              <li>   <Link to='/newTask'>New Task</Link></li>
+              <li>        <Link to='/progress'>In Progress</Link></li>
+              <li>  <Link to='/complete'>Completed</Link>  </li>
+              <li> 
+                <Link to='/cancel'>Canceled</Link>   </li>
+                     
+              
             </ul>
 
 

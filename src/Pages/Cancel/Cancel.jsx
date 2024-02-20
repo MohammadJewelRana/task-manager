@@ -5,7 +5,7 @@ import useTask from "../../hooks/useTask";
 import TaskCard from "../../Shared/TaskCard";
 
 const Cancel = () => {
-  const [tasks] = useTask();
+  const [tasks, taskLoading, refetch] = useTask();
 
   const cancelStatusTask = tasks.filter((item) => item.status === "cancel");
   // console.log(newStatusTask);
@@ -14,7 +14,7 @@ const Cancel = () => {
     <div>
       <Title heading={"  Canceled Task"}></Title>
 
-      <TaskCard taskData={cancelStatusTask}></TaskCard>
+      <TaskCard taskData={cancelStatusTask} ></TaskCard>
     </div>
   );
 };

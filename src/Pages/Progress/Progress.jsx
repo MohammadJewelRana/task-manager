@@ -8,7 +8,7 @@ const Progress = () => {
 
  
 
-    const [tasks] = useTask();
+    const [tasks, taskLoading, refetch] = useTask();
 
     const progressStatusTask = tasks.filter(item => item.status === 'progress');
     // console.log(newStatusTask);
