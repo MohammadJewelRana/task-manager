@@ -7,6 +7,8 @@ const Navbar = () => {
 
   const {user,logout}=useContext(AuthContext);
   // console.log(user);
+  // console.log(user?.photoURL);
+  const photo=user?.photoURL;
 
 const navigate=useNavigate();
   
@@ -86,7 +88,10 @@ const navigate=useNavigate();
                 <> 
                  {
                   user?.photoURL ?
-                  <> {user?.photoURL} </>
+                  <>  
+                   <img alt="Tailwind CSS Navbar component" src={photo}  />
+                  
+                   </>
                   :
                   <> 
                     <img alt="Tailwind CSS Navbar component" src="https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg" />
@@ -118,7 +123,21 @@ const navigate=useNavigate();
                 </a>
               </li>
               <li><a>Settings</a></li>
-              <li><Link    onClick={handleLogout}>Logout</Link></li>
+{
+  user ?
+
+  <>
+   <li><Link    onClick={handleLogout}>Logout</Link></li>
+  </>
+  :
+  <>
+   <li><Link    to='/login'>Login</Link></li>
+  </>
+}
+
+              
+
+
             </ul>
           </div>
 

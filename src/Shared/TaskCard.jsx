@@ -10,6 +10,7 @@ const TaskCard = ({ taskData }) => {
 
     const [selectedValue, setSelectedValue] = useState('');
     const [updateId, setUpdateId] = useState('')
+    const [loading,setLoading]=useState(false)
 
     const [tasks, taskLoading, refetch] = useTask();
 
@@ -86,6 +87,16 @@ const TaskCard = ({ taskData }) => {
         // console.log(updateId);
         // console.log(selectedValue);
 
+        // setLoading(true);
+
+        // if(selectedValue==='new'){
+        //     setSelectedValue('new');
+        // }
+
+        // if(selectedValue!=null){
+        //   setLoading(false)
+        // }
+
         const updatedData = { status: selectedValue }
         // console.log(updatedData);
 
@@ -108,6 +119,15 @@ const TaskCard = ({ taskData }) => {
                         confirmButtonText: 'OK'
                     })
                 }
+                else{
+                    // alert('Same status!! Please Change Your Update Status')
+                    Swal.fire({
+                        icon: "error",
+                        title: "Oops...",
+                        text: "Same status!! Please Change Your Updated Status",
+                        footer: '<a href="#">Why do I have this issue?</a>'
+                      });
+                }
                 refetch();
             })
 
@@ -125,9 +145,9 @@ const TaskCard = ({ taskData }) => {
                 {
                     taskData.length === 0 ?
 
-                        <div className=' flex flex-col place-content-center mx-auto mt-14'>
-                            <img src={oops} className='rounded-full ' alt="" />
-                            <p className='my-12 text-4xl font-bold text-red-600 border p-8 rounded-lg shadow-lg text-center '>No task available right now</p>
+                        <div className=' flex flex-col place-content-center mx-auto -mt-6  md:mt-8'>
+                            <img src={oops} className='rounded-full  p-8 ' alt="" />
+                            <p className='md:my-4 text-4xl font-bold text-red-600 border p-8 rounded-lg shadow-lg text-center '>No task available right now</p>
 
                         </div>
                         :
@@ -235,7 +255,8 @@ const TaskCard = ({ taskData }) => {
                     <h3 className="font-bold text-2xl">Change Status</h3>
                     <div>
                         <select className="select select-secondary w-full  bg-white mt-4 outline-none  text-xl" value={selectedValue} name='selectOption' onChange={handleSelectChange}>
-                            <option selected value='new'>New</option>
+                        <option disabled value=''>Select an option</option> 
+                           <option    value='new'>New</option> 
                             <option value='completed'>Completed</option>
                             <option value='progress'>Progress</option>
                             <option value='cancel'>Canceled</option>
@@ -251,6 +272,7 @@ const TaskCard = ({ taskData }) => {
                     </div>
                 </div>
             </dialog>
+            
             {/* </form> */}
         </div>
     );
