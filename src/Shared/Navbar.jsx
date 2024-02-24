@@ -6,7 +6,7 @@ import Swal from 'sweetalert2';
 const Navbar = () => {
 
   const {user,logout}=useContext(AuthContext);
-  console.log(user);
+  // console.log(user);
 
 const navigate=useNavigate();
   
@@ -109,12 +109,7 @@ const navigate=useNavigate();
 
 
             </div>
-            {
-              user?.email ?
-              <>{ user?.email}
-              </> :
-              <> </>
-            }
+            
             <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-slate-100 rounded-box w-52 ">
               <li>
                 <a className="justify-between">

@@ -3,12 +3,10 @@ import React from "react";
 import Title from "../../Shared/Title";
 import useTask from "../../hooks/useTask";
 import TaskCard from "../../Shared/TaskCard";
+import useSpecificTask from "../../hooks/useSpecificTask";
 
 const Cancel = () => {
-  const [tasks, taskLoading, refetch] = useTask();
-
-  const cancelStatusTask = tasks.filter((item) => item.status === "cancel");
-  // console.log(newStatusTask);
+  const [allTask,newStatusTask,completeStatusTask,cancelStatusTask,progressStatusTask]=useSpecificTask()
 
   return (
     <div>

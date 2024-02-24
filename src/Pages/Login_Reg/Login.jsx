@@ -3,7 +3,8 @@ import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../Provider/AuthProvider';
 import { ToastContainer, toast } from 'react-toastify';
 import Swal from 'sweetalert2';
-
+import { FaGoogle } from "react-icons/fa";
+import SocialLogin from './SocialLogin';
 
 
 const Login = () => {
@@ -23,14 +24,14 @@ const Login = () => {
         const password=form.password.value;
        
 
-        console.log(email ,password );
+        // console.log(email ,password );
 
  
 
         login(email,password)
         .then(res => {
             const user = res.user;
-            console.log(user);
+            // console.log(user);
             // navigate(from, { replace: true });
             // reset();
             navigate('/')
@@ -45,7 +46,7 @@ const Login = () => {
 
         })
         .catch((error) => {
-            // console.log(error);
+            console.log(error);
             Swal.fire({
                 icon: "error",
                 title: "Oops...",
@@ -83,6 +84,9 @@ const Login = () => {
 
 
                 </form>
+<SocialLogin></SocialLogin>
+ 
+
                 <div className='mt-8 '>
 
                     <p className='text-center mb-4'><Link className=' ' > Forgot Password</Link></p>

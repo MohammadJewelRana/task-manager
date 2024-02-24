@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import Title from '../../Shared/Title';
 import Swal from 'sweetalert2';
+import { AuthContext } from '../../Provider/AuthProvider';
 
 const CreateNew = () => {
 
@@ -10,6 +11,9 @@ const CreateNew = () => {
 
     const [text, setText] = useState('')
     const [textDetails, setTextDetails] = useState('')
+
+    const {user}=useContext(AuthContext);
+    // console.log(user?.email);
 
 
     const todayDate = () => {
@@ -37,7 +41,7 @@ const CreateNew = () => {
 
         // console.log(task,details);
 
-        const taskData = { task, details, date, status: 'new' };
+        const taskData = { task, details, date, status: 'new',email:user?.email };
         // console.log(taskData);
 
         fetch('https://task-manager-server-nine-mu.vercel.app/tasks', {

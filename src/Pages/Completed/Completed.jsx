@@ -3,14 +3,11 @@ import React from 'react';
 import Title from '../../Shared/Title';
 import useTask from '../../hooks/useTask';
 import TaskCard from '../../Shared/TaskCard';
+import useSpecificTask from '../../hooks/useSpecificTask';
 
 const Completed = () => {
 
-    const [tasks, taskLoading, refetch] = useTask();
-    // console.log(tasks);
-
-    const completeStatusTask = tasks.filter(item => item.status === 'completed');
-    // console.log(newStatusTask);
+    const [allTask,newStatusTask,completeStatusTask,cancelStatusTask,progressStatusTask]=useSpecificTask()
 
 
     return (

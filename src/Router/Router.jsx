@@ -46,41 +46,18 @@ import Registration from '../Pages/Login_Reg/Registration.jsx';
                         element: <Cancel></Cancel>
                     },
 
-                    //////////////////////////////////////////////
-                    
-                    // {
-                    //     path:'/log',
-                    //     element: <Cancel></Cancel>
-                    // }
+    
                 ]
                
  
             },
 
-            // {
-            //     path:'/login',
-            //     element:<Login></Login>
-            // },
-            // {
-            //     path:'/registration',
-            //     element:<Registration></Registration>
-            // }
-
+     
 
         ]
     },
 
-
-    // {
-    //     path:'/',
-    //     element:<SideLayout></SideLayout>,
-    //     children:[
-    //         {
-    //             path:'/',
-    //             element:<Dashboard></Dashboard>
-    //         }
-    //     ]
-    // }
+ 
 
     {
         path:'/login',

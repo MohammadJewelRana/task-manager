@@ -1,10 +1,18 @@
-import React, { useContext } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useContext, useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../Provider/AuthProvider';
+import SocialLogin from './SocialLogin';
+import Swal from 'sweetalert2';
 
 const Registration = () => {
 
-    const {createAccount}=useContext(AuthContext);
+    const { createAccount } = useContext(AuthContext);
+
+    const [error,setError]=useState('')
+
+    const navigate=useNavigate();
+
+
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -17,19 +25,76 @@ const Registration = () => {
         const mobile = form.mobile.value;
 
         // console.log(email,name,password,mobile);
-        const registerData = { email, name, password, mobile }
-        console.log(registerData);
-      
-      
-        createAccount(email,password)
-        .then(result=>{
-            const loggedUser=result.user;
-            console.log(loggedUser);
-        })
-        .catch(error=>{
-            console.log(error);
+        const registerData = { email, name, password, mobile, userRole:'stakeHolder' }
+        // console.log(registerData);
 
-        })
+
+        // createAccount(email,password)
+        // .then(result=>{
+        //     const loggedUser=result.user;
+        //     console.log(loggedUser);
+        //     if(loggedUser){
+        //         Swal.fire({
+        //             position: "top-end",
+        //             icon: "success",
+        //             title: "  Successfully registered!!",
+        //             showConfirmButton: false,
+        //             timer: 1500
+        //           });
+        //     }
+
+
+        // })
+        // .catch(error=>{
+        //     console.log(error);
+        //     Swal.fire({
+        //         icon: "error",
+        //         title: "Oops...",
+        //         text: "Something went wrong!!!  try again    ",                   
+        //         footer: '<a href="#">Why do I have this issue?</a>'
+        //       });
+
+        // })
+
+
+        createAccount(email, password)
+            .then(res => {
+                const loggedUser = res.user;
+                // console.log(loggedUser);
+
+                fetch("https://task-manager-server-nine-mu.vercel.app/users",{
+                    method:'POST',
+                    headers:{
+                        'content-type': 'application/json'
+                    },
+                    body: JSON.stringify(registerData)
+                })
+                .then(res=>res.json())
+                .then(data=>{
+                    // console.log(data);
+                    if (data.insertedId) {
+                        // reset();
+                        Swal.fire(
+                            'Congratulations!',
+                            'Successfully registered!!!!',
+                            'success'
+                        )
+                        navigate('/login');
+                    }
+
+                })
+            })
+            .catch(error => {
+                console.log(error);
+                setError(error)
+                Swal.fire({
+                    icon: "error",
+                    title: "Oops...",
+                    // text: "Something went wrong!!!  try again    ",
+                    text:  `${error}`,
+                    footer: '<a href="#">Why do I have this issue?</a>'
+                });
+            })
 
 
 
@@ -67,12 +132,15 @@ const Registration = () => {
 
 
                     </form>
+
+                    <SocialLogin></SocialLogin>
                     <div className='mt-8 '>
 
-                        <p className='text-center mb-4'><Link className='border p-2 rounded-lg px-4 bg-blue-500 text-white' to='/login'> Sign In</Link></p>
+                        {/* <p className='text-center mb-4'><Link className='border p-2 rounded-lg px-4 bg-blue-500 text-white' to='/login'> Sign In</Link></p> */}
                         <p className='text-center'>
                             <Link >Forgot password</Link>
                         </p>
+                        <p className='text-center mt-4'>ALready have an account? <Link to='/login' className='text-blue-600' >Sign In</Link></p>
                     </div>
                 </div>
             </div>

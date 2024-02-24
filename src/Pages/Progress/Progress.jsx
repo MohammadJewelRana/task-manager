@@ -3,14 +3,15 @@ import Swal from 'sweetalert2';
 import Title from '../../Shared/Title';
 import TaskCard from '../../Shared/TaskCard';
 import useTask from '../../hooks/useTask';
+import useSpecificTask from '../../hooks/useSpecificTask';
 
 const Progress = () => {
 
  
+    const [allTask,newStatusTask,completeStatusTask,cancelStatusTask,progressStatusTask]=useSpecificTask()
 
-    const [tasks, taskLoading, refetch] = useTask();
-
-    const progressStatusTask = tasks.filter(item => item.status === 'progress');
+    // const [tasks, taskLoading, refetch] = useTask();
+    // const progressStatusTask = tasks.filter(item => item.status === 'progress');
     // console.log(newStatusTask);
 
     return (

@@ -1,15 +1,30 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import Title from '../../Shared/Title';
 import useTask from '../../hooks/useTask';
+import useUSer from '../../hooks/useUSer';
+import { AuthContext } from '../../Provider/AuthProvider';
 
 const Dashboard = () => {
 
     const [tasks, taskLoading, refetch] = useTask();
 
-    const newStatusTask = tasks.filter(item => item.status === 'new');
-    const completeStatusTask = tasks.filter(item => item.status === 'completed');
-    const cancelStatusTask = tasks.filter(item => item.status === 'cancel');
-    const progressStatusTask = tasks.filter(item => item.status === 'progress');
+    // const [users, userLoading, userRefetch]=useUSer();
+    // console.log(users);
+  
+
+    const {user}=useContext(AuthContext);
+    // console.log(user?.email);
+
+    const allTask=tasks.filter(item=>item.email=== user?.email);
+    console.log(allTask);
+ 
+
+
+
+    const newStatusTask = allTask.filter(item => item.status === 'new');
+    const completeStatusTask = allTask.filter(item => item.status === 'completed');
+    const cancelStatusTask = allTask.filter(item => item.status === 'cancel');
+    const progressStatusTask = allTask.filter(item => item.status === 'progress');
 
 
     // console.log(newStatusTask);
@@ -24,7 +39,7 @@ const Dashboard = () => {
 
             <div className='border shadow-lg p-4 w-full mb-12   md:h-32  text-center flex flex-col items-center justify-center rounded-lg'>
                     <h1 className='text-2xl font-semibold mb-2'>Total Tasks</h1>
-                    <p className='font-bold text-xl'> {tasks.length} </p>
+                    <p className='font-bold text-xl'> {allTask.length} </p>
                 </div>
 
 
