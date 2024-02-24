@@ -63,6 +63,7 @@ const googleProvider = new GoogleAuthProvider();
         user,
         logout,
         googleSignIn,
+        loading
 
 
     }

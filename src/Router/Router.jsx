@@ -11,23 +11,25 @@ import Complete from '../Pages/Completed/Completed.jsx'
 import Cancel from '../Pages/Cancel/Cancel.jsx'
 import Login from '../Pages/Login_Reg/Login.jsx';
 import Registration from '../Pages/Login_Reg/Registration.jsx';
+import PrivateRoute from './PrivateRoute.jsx';
+ 
 
  const router=createBrowserRouter([
     {
         path:'/',
-        element:<HomeLayout></HomeLayout>,
+        element:  <HomeLayout></HomeLayout> ,
         children:[
             {
                 path:'/',
-                element:<Home></Home>,
+                element:  <Home></Home> ,
                 children:[
                     {
                         path:'/',
-                        element:<Dashboard></Dashboard>
+                        element:   <Dashboard></Dashboard> 
                     },
                     {
                         path:'/createNew',
-                        element:<CreateNew></CreateNew>
+                        element: <PrivateRoute><CreateNew></CreateNew></PrivateRoute>
                     },
                     {
                         path:'/newTask',

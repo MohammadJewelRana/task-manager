@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../Provider/AuthProvider';
 import { ToastContainer, toast } from 'react-toastify';
 import Swal from 'sweetalert2';
@@ -13,6 +13,8 @@ const Login = () => {
     const {login}=useContext(AuthContext);
 
     const navigate=useNavigate();
+    const location = useLocation();
+    const from = location.state?.from?.pathname || '/';
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -32,9 +34,9 @@ const Login = () => {
         .then(res => {
             const user = res.user;
             // console.log(user);
-            // navigate(from, { replace: true });
+            navigate(from, { replace: true });
             // reset();
-            navigate('/')
+            // navigate('/')
             // toast("Successfully Login!!!");
             Swal.fire({
                 position: "top-end",
