@@ -1,21 +1,59 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useContext } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import { AuthContext } from '../../Provider/AuthProvider';
+import { ToastContainer, toast } from 'react-toastify';
+import Swal from 'sweetalert2';
+
+
 
 const Login = () => {
+
+
+    const {login}=useContext(AuthContext);
+
+    const navigate=useNavigate();
 
     const handleSubmit = (e) => {
         e.preventDefault();
 
         const form=e.target;
         // console.log(form.email);
-        const name=form.name.value;
+    
         const email=form.email.value;
         const password=form.password.value;
-        const mobile=form.mobile.value;
+       
 
-        // console.log(email,name,password,mobile);
-        const registerData={ email,name,password,mobile}
-        console.log(registerData);
+        console.log(email ,password );
+
+ 
+
+        login(email,password)
+        .then(res => {
+            const user = res.user;
+            console.log(user);
+            // navigate(from, { replace: true });
+            // reset();
+            navigate('/')
+            // toast("Successfully Login!!!");
+            Swal.fire({
+                position: "top-end",
+                icon: "success",
+                title: "Successfully Login!!! ",
+                showConfirmButton: false,
+                timer: 1500
+              });
+
+        })
+        .catch((error) => {
+            // console.log(error);
+            Swal.fire({
+                icon: "error",
+                title: "Oops...",
+                text: "Something went wrong!!!  try again    ",                   
+                footer: '<a href="#">Why do I have this issue?</a>'
+              });
+        })
+        
         
 
 
@@ -49,11 +87,12 @@ const Login = () => {
 
                     <p className='text-center mb-4'><Link className=' ' > Forgot Password</Link></p>
                     <p className='text-center'>
-                      Create an account?   <Link className='text-blue-600'>Sign Up</Link>
+                      Create an account?   <Link className='text-blue-600' to='/registration'>Sign Up</Link>
                     </p>
                 </div>
             </div>
         </div>
+        <ToastContainer />
     </div>
     );
 };

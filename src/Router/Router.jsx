@@ -9,6 +9,8 @@ import NewTask from '../Pages/NewTask/NewTask.jsx'
 import Progress from '../Pages/Progress/Progress.jsx'
 import Complete from '../Pages/Completed/Completed.jsx'
 import Cancel from '../Pages/Cancel/Cancel.jsx'
+import Login from '../Pages/Login_Reg/Login.jsx';
+import Registration from '../Pages/Login_Reg/Registration.jsx';
 
  const router=createBrowserRouter([
     {
@@ -42,11 +44,29 @@ import Cancel from '../Pages/Cancel/Cancel.jsx'
                     {
                         path:'/cancel',
                         element: <Cancel></Cancel>
-                    }
+                    },
+
+                    //////////////////////////////////////////////
+                    
+                    // {
+                    //     path:'/log',
+                    //     element: <Cancel></Cancel>
+                    // }
                 ]
                
  
-            }
+            },
+
+            // {
+            //     path:'/login',
+            //     element:<Login></Login>
+            // },
+            // {
+            //     path:'/registration',
+            //     element:<Registration></Registration>
+            // }
+
+
         ]
     },
 
@@ -61,5 +81,18 @@ import Cancel from '../Pages/Cancel/Cancel.jsx'
     //         }
     //     ]
     // }
+
+    {
+        path:'/login',
+        element:<Login></Login>
+    },
+    {
+        path:'/registration',
+        element:<Registration></Registration>
+    }
+
+
+
+
  ])
 export default router;

@@ -118,7 +118,7 @@ const TaskCard = ({ taskData }) => {
 
     return (
         <div>
-            <div className=" flex flex-wrap items-center justify-start gap-44">
+            <div className=" flex flex-wrap   items-center justify-start gap-16 mb-24 md:gap-44">
 
 
 

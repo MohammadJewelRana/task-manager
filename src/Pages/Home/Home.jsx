@@ -13,7 +13,7 @@ const Home = () => {
 
             </div>
 
-            <div className='mt-20 mx-8 w-full'>
+            <div className='mt-20  md:mx-8 w-full'>
            
                 {/* <SideLayout></SideLayout> */}
 

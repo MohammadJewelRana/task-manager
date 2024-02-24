@@ -85,13 +85,13 @@ const CreateNew = () => {
             <Title heading={'Create New'}></Title>
 
             <form action="" onSubmit={handleSubmit}>
-                <div className=' shadow-lg py-24 px-12 '>
-                    <input type="text" className='text-black px-12 py-8 text-xl bg-white border  w-full h-12 rounded-lg mb-12 ' placeholder='Task Name' name='taskName' value={text}
+                <div className='   md:shadow-lg  py-8   md:py-24 px-4 md:px-12 '>
+                    <input type="text" className='text-black px-4 md:px-12 py-8 text-xl bg-white border  w-full h-12 rounded-lg mb-12 ' placeholder='Task Name' name='taskName' value={text}
                         onChange={(e) => setText(e.target.value)}
 
                     />
 
-                    <textarea placeholder="Task Description" className="text-black px-12 py-8 text-xl bg-white border    rounded-lg   mb-4  w-full  h-44 " name='taskDetails' value={textDetails}
+                    <textarea placeholder="Task Description" className="text-black px-4 md:px-12 py-8 text-xl bg-white border    rounded-lg   mb-4  w-full  h-44 " name='taskDetails' value={textDetails}
                         onChange={(e) => setTextDetails(e.target.value)}
                     ></textarea>
 

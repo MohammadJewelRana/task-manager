@@ -1,8 +1,10 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
+import { AuthContext } from '../../Provider/AuthProvider';
 
 const Registration = () => {
 
+    const {createAccount}=useContext(AuthContext);
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -17,6 +19,21 @@ const Registration = () => {
         // console.log(email,name,password,mobile);
         const registerData = { email, name, password, mobile }
         console.log(registerData);
+      
+      
+        createAccount(email,password)
+        .then(result=>{
+            const loggedUser=result.user;
+            console.log(loggedUser);
+        })
+        .catch(error=>{
+            console.log(error);
+
+        })
+
+
+
+
 
 
 
@@ -52,9 +69,9 @@ const Registration = () => {
                     </form>
                     <div className='mt-8 '>
 
-                        <p className='text-center mb-4'><Link className='border p-2 rounded-lg px-4 bg-blue-500 text-white'> Sign In</Link></p>
+                        <p className='text-center mb-4'><Link className='border p-2 rounded-lg px-4 bg-blue-500 text-white' to='/login'> Sign In</Link></p>
                         <p className='text-center'>
-                            <Link>Forgot password</Link>
+                            <Link >Forgot password</Link>
                         </p>
                     </div>
                 </div>
